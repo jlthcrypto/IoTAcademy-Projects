@@ -53,6 +53,7 @@ contract multiSigWallet{
     }
 
     function approveTransfer(uint _transferID) public onlyOwners {
+        require(approvals[msg.sender][_transferID] == false);
         approvals[msg.sender][_transferID] = true;
         transferRequests[_transferID].approvals += 1;
 
